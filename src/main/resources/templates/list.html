@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+      <meta charset="UTF-8">
+      <title>List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container my-2" align="center">
+      <h4>All saved pastes!</h4>
+      <br>
+      <a href="/paste" class="btn btn-primary btn-sm mb-3">Add a new paste</a>
+      <table style="width:80%" border="1" class="table-secondary table table-bordered">
+        <thead>
+        <tr class="table-info">
+          <th>Id</th>
+          <th>Author</th>
+          <th>Date</th>
+          <th>Content</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="paste:${paste}">
+          <td><p th:text="${paste.id}"/></td>
+          <td><p th:text="${paste.author}"/></td>
+          <td><p th:text="${paste.date}"/></td>
+          <td><p th:text="${paste.text}"/></td>
+          <td><a th:href="@{/deletePaste/{id} (id=${paste.id})}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
